@@ -56,7 +56,7 @@
             justify-content: center; align-items: center;
             transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 1.2s ease;
         }
-
+        
         .envelope-border {
             position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px;
             border: 2px solid rgba(212, 175, 55, 0.3); pointer-events: none;
@@ -190,7 +190,40 @@
         #scratch-canvas { position: absolute; top: 0; left: 0; z-index: 10; cursor: pointer; touch-action: none; }
 
         .scratch-hint { font-size: 0.85rem; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+        .btn-group {
+           display: flex;
+           justify-content: center;
+           gap: 15px;
+           flex-wrap: wrap;
+           margin-top: 20px;
+           max-width: 450px; /* Keeps the buttons nicely contained */
+           margin-left: auto;
+           margin-right: auto;
+          }
 
+        .action-btn {
+           flex: 1; /* Forces both buttons to grow and share the exact same width */
+           min-width: 200px; /* Ensures they don't get too squished on smaller screens */
+           text-align: center;
+           padding: 12px 20px;
+           border: 1px solid var(--accent-gold);
+           color: var(--accent-gold);
+           background-color: transparent;
+           text-decoration: none;
+           text-transform: uppercase;
+           letter-spacing: 1px;
+           font-size: 0.8rem;
+           transition: all 0.3s;
+           cursor: pointer;
+           font-family: var(--font-body);
+           border-radius: 4px;
+           box-sizing: border-box;
+        }
+
+        .action-btn:hover {
+             background-color: var(--accent-gold);
+             color: var(--primary-bg);
+        }
         .map-btn {
             display: inline-block; margin-top: 20px; padding: 12px 30px;
             border: 1px solid var(--accent-gold); color: var(--accent-gold);
@@ -306,7 +339,10 @@
                 <p style="margin-top: 20px;"><strong>APM Auditorium</strong></p>
                 <p>Thalakkadathur, Tirur, Kerala 676103</p>
             </div>
-            <a href="https://maps.app.goo.gl/eqs7BGUxgMZ4Jrft5" target="_blank" class="map-btn">View on Map</a>
+            <div class="btn-group">
+             <a href="https://maps.app.goo.gl/eqs7BGUxgMZ4Jrft5" target="_blank" class="action-btn">View on Map</a>
+             <button onclick="addToCalendar()" class="action-btn">📅 Add to Calendar</button>
+             </div>
         </div>
     </section>
 
@@ -490,6 +526,32 @@
             submitted = true; // Let the iframe know it was a success
             return true;
         }
+          // --- Add to Calendar (.ics generator) ---
+function addToCalendar() {
+    const icsData = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Khamarunnisa & Abdullah Wedding//EN',
+        'BEGIN:VEVENT',
+        'UID:nikkah-khamarunnisa-abdullah@wedding.com',
+        'DTSTAMP:20261013T000000Z',
+        'DTSTART:20261101T050000Z', // 10:30 AM IST converted to UTC
+        'DTEND:20261101T080000Z',
+        'SUMMARY:Dr. Khamarunnisa Sherin & Dr. Abdullah Shafeek — Nikkah',
+        'LOCATION:APM Auditorium, Alinchuvadu, Tirur, Kerala',
+        'DESCRIPTION:Wedding Nikkah ceremony of Dr. Khamarunnisa Sherin and Dr. Abdullah Shafeek.',
+        'END:VEVENT',
+        'END:VCALENDAR'
+    ].join('\r\n');
+
+    const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.download = 'Khamarunnisa-Abdullah-Nikkah.ics';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
     </script>
 </body>
 </html>
