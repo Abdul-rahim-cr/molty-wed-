@@ -33,7 +33,7 @@
             color: var(--text-light);
             line-height: 1.6;
             overflow-x: hidden;
-            overflow-y: hidden; /* Hidden until envelope opens */
+            overflow-y: hidden; 
         }
 
         h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 400; }
@@ -45,85 +45,62 @@
 
         /* --- Envelope / Cover Section --- */
         #envelope-cover {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100vh;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
             background: radial-gradient(circle at center, rgba(19, 51, 36, 1) 0%, rgba(11, 31, 21, 1) 100%);
-            z-index: 9999;
-            display: flex; flex-direction: column;
+            z-index: 9999; display: flex; flex-direction: column;
             justify-content: center; align-items: center;
             transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 1.2s ease;
         }
 
         .envelope-border {
-            position: absolute;
-            top: 20px; left: 20px; right: 20px; bottom: 20px;
-            border: 2px solid rgba(212, 175, 55, 0.3);
-            pointer-events: none;
+            position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px;
+            border: 2px solid rgba(212, 175, 55, 0.3); pointer-events: none;
         }
 
         .envelope-seal {
-            width: 80px; height: 80px;
-            background-color: var(--accent-gold);
-            border-radius: 50%;
-            display: flex; justify-content: center; align-items: center;
+            width: 80px; height: 80px; background-color: var(--accent-gold);
+            border-radius: 50%; display: flex; justify-content: center; align-items: center;
             font-family: var(--font-heading); font-size: 1.8rem; color: var(--primary-bg);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); margin-bottom: 30px;
         }
 
         .open-btn {
-            padding: 15px 40px;
-            background-color: transparent;
-            border: 1px solid var(--accent-gold);
-            color: var(--accent-gold);
-            font-family: var(--font-heading);
-            font-size: 1.2rem; letter-spacing: 2px;
+            padding: 15px 40px; background-color: transparent;
+            border: 1px solid var(--accent-gold); color: var(--accent-gold);
+            font-family: var(--font-heading); font-size: 1.2rem; letter-spacing: 2px;
             cursor: pointer; transition: all 0.3s ease;
         }
 
-        .open-btn:hover {
-            background-color: var(--accent-gold);
-            color: var(--primary-bg);
-        }
+        .open-btn:hover { background-color: var(--accent-gold); color: var(--primary-bg); }
 
         /* --- Floating Audio Button --- */
         #audio-toggle {
-            position: fixed;
-            bottom: 30px; right: 30px;
-            width: 50px; height: 50px;
-            border-radius: 50%;
-            background-color: var(--accent-gold);
-            border: none; color: var(--primary-bg);
-            font-size: 1.2rem; cursor: pointer;
+            position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
+            border-radius: 50%; background-color: var(--accent-gold);
+            border: none; color: var(--primary-bg); font-size: 1.2rem; cursor: pointer;
             z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-            display: none; /* Hidden until cover opens */
-            justify-content: center; align-items: center;
+            display: none; justify-content: center; align-items: center;
         }
 
-        /* --- Falling Leaves / Petals Animation --- */
+        /* --- Falling Golden Leaves Animation --- */
         .petals-container {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 9998; /* Sits just below the envelope initially */
-            overflow: hidden;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 9998; overflow: hidden;
         }
 
         .petal {
-            position: absolute;
-            top: -10%;
+            position: absolute; top: -10%;
+            /* Golden leaf gradient */
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.8) 0%, rgba(189, 153, 36, 0.4) 100%);
-            /* Creates a beautiful leaf shape */
+            /* Beautiful leaf shape */
             border-radius: 50% 0px 50% 0px; 
             box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
             animation: fall linear infinite, sway ease-in-out infinite alternate;
         }
 
         @keyframes fall {
-            0% { top: -10%; opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { top: 110%; opacity: 0; }
+            0% { top: -10%; opacity: 0; } 10% { opacity: 1; }
+            90% { opacity: 1; } 100% { top: 110%; opacity: 0; }
         }
 
         @keyframes sway {
@@ -140,20 +117,20 @@
 
         /* --- Hero Section --- */
         .hero {
-            min-height: 100vh;
-            display: flex; flex-direction: column;
+            min-height: 100vh; display: flex; flex-direction: column;
             justify-content: center; align-items: center;
             text-align: center; padding: 20px;
         }
 
         .eyebrow {
-            font-size: 0.9rem; letter-spacing: 4px;
-            text-transform: uppercase; color: var(--accent-gold); margin-bottom: 20px;
+            font-size: 0.9rem; letter-spacing: 4px; text-transform: uppercase; 
+            color: var(--accent-gold); margin-bottom: 20px;
         }
 
         .hero h1 { font-size: clamp(2rem, 5vw, 4rem); margin: 10px 0; line-height: 1.2; color: #fff; }
         .hero .ampersand {
-            color: var(--accent-gold); font-size: clamp(1.8rem, 4vw, 2.5rem); font-style: italic; display: block; margin: 10px 0;
+            color: var(--accent-gold); font-size: clamp(1.8rem, 4vw, 2.5rem); 
+            font-style: italic; display: block; margin: 10px 0;
         }
 
         /* --- Container & Layout --- */
@@ -162,17 +139,12 @@
 
         /* --- Dedicated Circular Countdown Timer --- */
         .timer-section {
-            background-color: var(--secondary-bg);
-            padding: 50px 20px;
-            margin-bottom: 40px;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            text-align: center;
+            background-color: var(--secondary-bg); padding: 50px 20px;
+            margin-bottom: 40px; border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2); text-align: center;
         }
 
-        .countdown { 
-            display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 30px; 
-        }
+        .countdown { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 30px; }
         
         .time-box {
             display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -212,10 +184,7 @@
 
         #scratch-canvas { position: absolute; top: 0; left: 0; z-index: 10; cursor: pointer; touch-action: none; }
 
-        .scratch-hint {
-            font-size: 0.85rem; color: var(--text-muted);
-            letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px;
-        }
+        .scratch-hint { font-size: 0.85rem; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
 
         .map-btn {
             display: inline-block; margin-top: 20px; padding: 12px 30px;
@@ -253,13 +222,15 @@
             transition: background 0.3s; border-radius: 4px; margin-top: 10px;
         }
         .submit-btn:hover { background-color: #e6c555; }
+        
+        #rsvp-success { display: none; color: var(--accent-gold); text-align: center; margin-top: 20px; font-size: 1.2rem; }
 
     </style>
 </head>
 <body>
 
     <!-- Background Audio -->
-    <audio id="bg-music" src="song.mp3" loop></audio>
+    <audio id="bg-music" src="wedsong.mp3" loop></audio>
 
     <!-- Floating Audio Control Button -->
     <button id="audio-toggle" aria-label="Toggle Music">🎵</button>
@@ -299,12 +270,12 @@
             <div class="person-card reveal">
                 <h3>Dr. Khamarunnisa Sherin</h3>
                 <p class="parents">D/O MR. MOHAMMED KUTTY E.M & MRS.DAISY E.M</p>
-                <p class="lineage" style="margin-top: 10px;">Eenthumudilil House, Kott Alinchuvadu, Tirur P.O. Malappuram - 676101</p>
+                <p class="lineage" style="margin-top: 10px;">Eenthumudilil House, Kott Alinchuvadu,Tirur P.O. Malappuram - 676101</p>
             </div>
 
             <div class="person-card reveal">
                 <h3>Dr. Abdullah Shafeek</h3>
-                <p class="parents">S/O MR. SHAFEEK A. & MRS. RASEENA SHAFEEK</p>
+                <p class="parents">S/O MR. SHAFEEK A & MRS. RASEENA SHAFEEK</p>
                 <p class="lineage" style="margin-top: 10px;">Alumkeezhil Veedu, Mathethara Nagar: 23, Kavanad P.O. Ramankulangara, Kollam - 691008</p>
             </div>
         </div>
@@ -328,34 +299,45 @@
             <div class="event-details">
                 <p style="color: var(--accent-gold); font-size: 1.2rem; font-weight: 500; margin-top: 20px;">11:00 AM (Nikkah)</p>
                 <p style="margin-top: 20px;"><strong>APM Auditorium</strong></p>
-                <p>Alinchuvadu, Tirur, Kerala</p>
+                <p>Thalakkadathur, Tirur, Kerala 676103</p>
             </div>
             <a href="https://maps.app.goo.gl/eqs7BGUxgMZ4Jrft5" target="_blank" class="map-btn">View on Map</a>
         </div>
     </section>
 
-    <!-- RSVP Section With Buttons -->
+    <!-- RSVP Section (Google Sheets Integrated) -->
     <section class="container reveal" style="padding-top: 0;">
         <h2 style="font-size: 2rem; color: var(--accent-gold); margin-bottom: 10px;">Be Our Guest</h2>
         <p style="color: var(--text-muted); margin-bottom: 40px;">Kindly let us know if you will be joining us.</p>
         
-        <form id="rsvpForm" class="rsvp-form">
+        <!-- HIDDEN IFRAME: Stops the page from redirecting to Google after submitting -->
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { document.getElementById('rsvpForm').style.display='none'; document.getElementById('rsvp-success').style.display='block'; }"></iframe>
+        
+        <!-- FORM WITH YOUR UNIQUE URL -->
+        <form id="rsvpForm" class="rsvp-form" action="https://docs.google.com/forms/d/e/1FAIpQLScBtQmPyZMAp6KlpCYZOHqgrsLN8zHAluZ2OdZPbQDIg3G6QA/formResponse?usp=pp_url&entry.302943577=+&entry.1718488679=+" method="POST" target="hidden_iframe" onsubmit="return validateAndSubmit();">
+            
             <div class="form-group">
                 <label for="guestName">Full Name(s)</label>
-                <input type="text" id="guestName" required placeholder="e.g. Abdul Rahim">
+                <!-- YOU MUST REPLACE 'entry.XXXXXXX' BELOW WITH YOUR ACTUAL NAME ENTRY ID -->
+                <input type="text" id="guestName" name="entry.302943577" required placeholder="e.g. Abdul Rahim">
             </div>
             
             <div class="form-group">
                 <label>Will you be attending?</label>
                 <div class="toggle-group">
-                    <button type="button" class="toggle-btn" data-value="yes">Yes, I'll join</button>
-                    <button type="button" class="toggle-btn" data-value="no">Can't make it</button>
+                    <button type="button" class="toggle-btn" data-value="Yes, I'll join">Yes, I'll join</button>
+                    <button type="button" class="toggle-btn" data-value="No, Can't make it">Can't make it</button>
                 </div>
-                <input type="hidden" id="attendanceValue" required>
+                <!-- YOU MUST REPLACE 'entry.YYYYYYY' BELOW WITH YOUR ACTUAL ATTENDING ENTRY ID -->
+                <input type="hidden" id="attendanceValue" name="entry.1718488679" required>
             </div>
             
             <button type="submit" class="submit-btn">Confirm RSVP</button>
         </form>
+
+        <!-- Success Message (Shows after submit) -->
+        <div id="rsvp-success">Jazakallah Khair! Your RSVP has been received.</div>
+
     </section>
 
     <footer style="text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.05); position: relative; z-index: 10;">
@@ -364,39 +346,32 @@
 
     <!-- JavaScript Interactions -->
     <script>
-        // 1. Falling Petals / Leaves Generation
+        // --- 1. Falling Golden Leaves ---
         function createPetals() {
             const petalsContainer = document.createElement('div');
             petalsContainer.className = 'petals-container';
             document.body.appendChild(petalsContainer);
             
-            const petalCount = 20; // Number of leaves falling at once
-            
+            const petalCount = 20; 
             for (let i = 0; i < petalCount; i++) {
                 const petal = document.createElement('div');
                 petal.className = 'petal';
-                
-                // Randomize position, size, and animation speed for natural look
                 petal.style.left = Math.random() * 100 + 'vw';
                 const size = Math.random() * 10 + 10;
                 petal.style.width = size + 'px';
-                petal.style.height = size + 'px';
+                petal.style.height = size + 'px'; 
                 
-                // Random fall speed between 8s and 15s
                 const fallDuration = Math.random() * 7 + 8;
-                // Random sway speed between 3s and 5s
                 const swayDuration = Math.random() * 2 + 3;
                 
                 petal.style.animationDuration = `${fallDuration}s, ${swayDuration}s`;
                 petal.style.animationDelay = `${Math.random() * 15}s, ${Math.random() * 15}s`;
-                
                 petalsContainer.appendChild(petal);
             }
         }
-        // Initialize petals
         createPetals();
 
-        // 2. Envelope & Audio Logic
+        // --- 2. Envelope & Audio ---
         const envelopeBtn = document.getElementById('open-envelope');
         const envelopeCover = document.getElementById('envelope-cover');
         const audio = document.getElementById('bg-music');
@@ -418,30 +393,21 @@
         });
 
         audioBtn.addEventListener('click', () => {
-            if (isPlaying) {
-                audio.pause();
-                audioBtn.innerHTML = '🎵';
-            } else {
-                audio.play();
-                audioBtn.innerHTML = '⏸️';
-            }
+            if (isPlaying) { audio.pause(); audioBtn.innerHTML = '🎵'; } 
+            else { audio.play(); audioBtn.innerHTML = '⏸️'; }
             isPlaying = !isPlaying;
         });
 
-        // 3. Scratch Card Logic
+        // --- 3. Scratch Card ---
         const canvas = document.getElementById('scratch-canvas');
         const ctx = canvas.getContext('2d');
         let isDrawing = false;
 
         function initCanvas() {
-            canvas.width = 350; 
-            canvas.height = 100;
-            ctx.fillStyle = '#d4af37';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.font = '16px Montserrat';
-            ctx.fillStyle = '#0b1f15';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
+            canvas.width = 350; canvas.height = 100;
+            ctx.fillStyle = '#d4af37'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.font = '16px Montserrat'; ctx.fillStyle = '#0b1f15';
+            ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
             ctx.fillText('SCRATCH HERE', canvas.width/2, canvas.height/2);
         }
         initCanvas();
@@ -458,9 +424,7 @@
             e.preventDefault(); 
             const pos = getMousePos(e);
             ctx.globalCompositeOperation = 'destination-out';
-            ctx.beginPath();
-            ctx.arc(pos.x, pos.y, 18, 0, Math.PI * 2);
-            ctx.fill();
+            ctx.beginPath(); ctx.arc(pos.x, pos.y, 18, 0, Math.PI * 2); ctx.fill();
         }
 
         canvas.addEventListener('mousedown', (e) => { isDrawing = true; scratch(e); });
@@ -471,23 +435,17 @@
         canvas.addEventListener('touchmove', scratch, {passive: false});
         canvas.addEventListener('touchend', () => isDrawing = false);
 
-        // 4. Scroll Reveal Logic
+        // --- 4. Scroll Reveal ---
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // 5. Countdown Timer Logic
+        // --- 5. Countdown Timer ---
         const countDownDate = new Date("Nov 1, 2026 10:30:00").getTime();
-        
         const x = setInterval(function() {
             const now = new Date().getTime();
             const distance = countDownDate - now;
-
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -504,10 +462,12 @@
             }
         }, 1000);
 
-        // 6. WhatsApp RSVP Submit Logic
+        // --- 6. Google Sheets Form Submission ---
+        let submitted = false; // Flag for iframe
         const toggleBtns = document.querySelectorAll('.toggle-btn');
         const attendanceInput = document.getElementById('attendanceValue');
 
+        // Toggle button logic
         toggleBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 toggleBtns.forEach(b => b.classList.remove('active'));
@@ -516,34 +476,15 @@
             });
         });
 
-        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
+        // Validation before submission
+        function validateAndSubmit() {
             if(!attendanceInput.value) {
                 alert("Please select if you will be attending before submitting.");
-                return;
+                return false;
             }
-            
-            const name = document.getElementById('guestName').value;
-            const isAttending = attendanceInput.value === 'yes' ? 'Yes, I will joyfully attend!' : 'Sorry, I cannot make it.';
-            
-            // Format the message for WhatsApp
-            const message = `*Wedding RSVP*\n\n*Name:* ${name}\n*Attending:* ${isAttending}`;
-            
-            // REPLACE THIS NUMBER WITH YOUR OWN WHATSAPP NUMBER
-            // Include country code, no + or spaces (e.g. 919876543210 for India)
-            const phoneNumber = "917736954075"; 
-            
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            
-            // Open WhatsApp in a new tab
-            window.open(whatsappUrl, '_blank');
-            
-            // Reset the form
-            this.reset();
-            toggleBtns.forEach(b => b.classList.remove('active'));
-            attendanceInput.value = '';
-        });
+            submitted = true; // Let the iframe know it was a success
+            return true;
+        }
     </script>
 </body>
 </html>
